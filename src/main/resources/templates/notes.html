@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Мои заметки</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <div class="note-header">
+        <h1>Мои заметки</h1>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-secondary">Выйти</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Добавить заметку</h2>
+        <form th:action="@{/add-note}" th:object="${newNote}" method="post">
+            <div class="form-group">
+                <label for="title">Заголовок:</label>
+                <input type="text" id="title" th:field="*{title}" required/>
+            </div>
+            <div class="form-group">
+                <label for="content">Содержание:</label>
+                <textarea id="content" th:field="*{content}" required rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn">Добавить</button>
+        </form>
+    </div>
+
+    <div th:if="${notes.isEmpty()}">
+        <div class="card">
+            <p style="text-align: center;">У вас пока нет ни одной заметки. Создайте первую!</p>
+        </div>
+    </div>
+
+    <div th:each="note : ${notes}" th:unless="${notes.isEmpty()}">
+        <div class="card note">
+            <h2 th:text="${note.title}">Заголовок</h2>
+            <p th:text="${note.content}">Текст...</p>
+
+            <div class="note-actions">
+                <form th:action="@{/delete-note}" method="post" style="display: inline;">
+                    <input type="hidden" name="id" th:value="${note.id}" />
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
