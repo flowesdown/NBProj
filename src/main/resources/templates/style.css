@@ -1,12 +1,12 @@
 
 :root {
-    --bg-main: #FBFBFB;         /* Почти белый фон */
-    --bg-accent: #EAE7E1;        /* Теплый бежевый/серый */
-    --accent-primary: #6A7A57;    /* Приглушенный оливково-зеленый */
+    --bg-main: #FBFBFB;
+    --bg-accent: #EAE7E1;
+    --accent-primary: #6A7A57;
     --accent-primary-dark: #566447;
-    --text-dark: #2c3e50;        /* Темный, но не черный текст */
-    --text-light: #7f8c8d;       /* Светло-серый текст */
-    --border-color: #e0e0e0;     /* Цвет рамок */
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --border-color: #e0e0e0;
 
     --font-heading: 'Lora', serif;
     --font-body: 'Poppins', sans-serif;
